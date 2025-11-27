@@ -8,9 +8,7 @@ test.before(() => {
   request.setDefaultTimeout(7000);
 });
 
-// -----------------------------
-// API 1: GET All Objects
-// -----------------------------
+
 test('API 1: GET All Objects', async () => {
   await spec()
     .get('/objects')
@@ -21,9 +19,6 @@ test('API 1: GET All Objects', async () => {
     }]);
 });
 
-// -----------------------------
-// API 2: GET Single Object
-// -----------------------------
 test('API 2: GET Single Object', async () => {
   await spec()
     .get('/objects/1')
@@ -34,9 +29,6 @@ test('API 2: GET Single Object', async () => {
     });
 });
 
-// -----------------------------
-// API 3: GET Multiple IDs
-// -----------------------------
 test('API 3: GET Multiple Objects by ID', async () => {
   await spec()
     .get('/objects?id=1&id=2&id=3')
@@ -44,9 +36,7 @@ test('API 3: GET Multiple Objects by ID', async () => {
     .expectJsonLength(3);
 });
 
-// -----------------------------
-// API 4: POST Create Object
-// -----------------------------
+
 test('API 4: POST Create New Object', async () => {
   createdId = await spec()
     .post('/objects')
@@ -63,9 +53,6 @@ test('API 4: POST Create New Object', async () => {
   console.log('Created ID:', createdId);
 });
 
-// -----------------------------
-// API 5: PUT Update Object
-// -----------------------------
 test('API 5: PUT Update Object', async () => {
   await spec()
     .put(`/objects/${createdId}`)
@@ -79,9 +66,6 @@ test('API 5: PUT Update Object', async () => {
     .expectJsonMatch('name', 'Updated Test Item');
 });
 
-// -----------------------------
-// API 6: PATCH Partial Update
-// -----------------------------
 test('API 6: PATCH Update Object Name Only', async () => {
   await spec()
     .patch(`/objects/${createdId}`)
@@ -92,9 +76,6 @@ test('API 6: PATCH Update Object Name Only', async () => {
     .expectJsonMatch('name', 'Patched Name');
 });
 
-// -----------------------------
-// API 7: DELETE Object
-// -----------------------------
 test('API 7: DELETE Object', async () => {
   await spec()
     .delete(`/objects/${createdId}`)
