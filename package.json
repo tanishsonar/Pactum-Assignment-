@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "pactum": "^3.8.0",
+    "uvu": "^0.5.6"
+  }
+}
